@@ -36,3 +36,6 @@ const swiper = new Swiper(".gallery-slider", {
     },
   },
 });
+
+
+

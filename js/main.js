@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     {
       email: 'lucianobatuta@live.com',
-      senha: 'Amerelão'
+      senha: 'Amarelão'
     }
   ];
 

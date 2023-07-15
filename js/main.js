@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const senhaValue = password.value;
 
     const regex = /^[\w.-]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,})+$/;
-    const verifyUser = dataUser.find(user => user.email.includes(emailValue) && user.senha.includes(senhaValue));
+    const verifyUser = dataUser.find(user => user.email === emailValue && user.senha === senhaValue);
 
-    if (!regex.test(emailValue) || !verifyUser) {
+    if (!regex.test(emailValue) || senhaValue.length < 3 || !verifyUser) {
       alert('Email ou senha inválidos.');
     } else {
       window.location.href = '/pages/user/user.html';

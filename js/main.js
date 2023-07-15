@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
       senha: 'Pitchichito'
     },
     {
-      email: 'matheuspradodeveloper@gmail.com',
+      email: 'lucianobatuta@live.com',
       senha: 'Amerelão'
     }
   ];

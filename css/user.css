@@ -450,3 +450,8 @@ p {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
+
+  #frase {
+    color: #ffffff;
+    font-size: 2rem;
+  }

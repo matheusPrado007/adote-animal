@@ -1,38 +1,52 @@
-const personForm = document.getElementById('personForm');
-    const peopleList = document.getElementById('peopleList');
+const fetchAnimais = async () => {
+    try {
+      const response = await fetch('https://api-adote.onrender.com/animais');
+      if (!response.ok) {
+        throw new Error('Erro na solicitação');
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Erro:', error);
+    }
+  };
+  
+  fetchAnimais();
 
-    personForm.addEventListener('submit', function(event) {
-      event.preventDefault();
+const form = document.getElementById('animalForm');
 
-      // Obter os valores dos campos de entrada
-      const name = document.getElementById('name').value;
-      const photo = document.getElementById('photo').value;
-      const age = document.getElementById('age').value;
-      const description = document.getElementById('description').value;
-      const city = document.getElementById('city').value;
-      const state = document.getElementById('state').value;
+form.addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-      // Criar um objeto com as informações da pessoa
-      const person = {
-        name: name,
-        photo: photo,
-        age: age,
-        description: description,
-        city: city,
-        state: state
-      };
+    const formData = new FormData(form);
+    const url = 'https://api-adote.onrender.com/animais';
+  
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formData
+      });
 
-      // Adicionar a pessoa à lista
-      const listItem = document.createElement('li');
-      listItem.innerHTML = `
-        <h3>${person.name}</h3>
-        <img src="${person.photo}" alt="${person.name}">
-        <p>Idade: ${person.age}</p>
-        <p>${person.description}</p>
-        <p>${person.city}, ${person.state}</p>
-      `;
-      peopleList.appendChild(listItem);
+    const resultado = await response.json();
+    console.log('Dados enviados com sucesso:', resultado);
+  } catch (erro) {
+    console.error('Erro ao enviar os dados:', erro);
+  }
+});
 
-      // Limpar os campos do formulário
-      personForm.reset();
-    });
+function processarImagem(foto) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      const dataUrl = reader.result;
+      resolve(dataUrl);
+    };
+
+    reader.onerror = function(error) {
+      reject(error);
+    };
+
+    reader.readAsDataURL(foto);
+  });
+}

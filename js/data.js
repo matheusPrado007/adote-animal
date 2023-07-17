@@ -13,26 +13,31 @@ const fetchAnimais = async () => {
   
   fetchAnimais();
 
-const form = document.getElementById('animalForm');
+  const form = document.getElementById('animalForm');
 
-form.addEventListener('submit', async function(event) {
+  form.addEventListener('submit', async function(event) {
     event.preventDefault();
-
+  
     const formData = new FormData(form);
-    const url = 'https://api-adote.onrender.com/animais';
+    const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
+    const apiUrl = 'https://api-adote.onrender.com/animais';
   
     try {
-      const response = await fetch(url, {
+      const response = await fetch(corsAnywhereUrl + apiUrl, {
         method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
         body: formData
       });
-
-    const resultado = await response.json();
-    console.log('Dados enviados com sucesso:', resultado);
-  } catch (erro) {
-    console.error('Erro ao enviar os dados:', erro);
-  }
-});
+  
+      const resultado = await response.json();
+      console.log('Dados enviados com sucesso:', resultado);
+    } catch (erro) {
+      console.error('Erro ao enviar os dados:', erro);
+    }
+  });
+  
 
 function processarImagem(foto) {
   return new Promise((resolve, reject) => {

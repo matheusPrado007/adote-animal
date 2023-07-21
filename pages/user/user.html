@@ -27,7 +27,7 @@
   </header>
   <!-- end -->
 
-  <form id="animalForm">
+  <form id="animalForm" action="https://api-adote.onrender.com/imagens" method="post" enctype="multipart/form-data">
     <h1 id="head">Preencha o formulário:</h1>
 
     <div>
@@ -40,7 +40,7 @@
       <label for="photo">
         <p> Foto:</p>
       </label>
-      <input type="file" name="profilePicture" accept="image/*" id="photo" class="btn">
+      <input type="file" accept="image/*" name="file" id="photo" class="btn">
     </div>
     <div>
       <label for="age">
@@ -64,15 +64,8 @@
       <label for="state">
         <p> UF:</p>
       </label>
-      <input type="text" id="state" class="inputs" required>
+      <input type="text" id="state" class="inputs" maxlength="2" required>
     </div>
-    <div>
-      <!-- <label for="adopted">
-        <p> Adotado:</p>
-      </label>
-      <input type="text" id="adopted" class="inputs" required>
-    </div> -->
-
     <button type="submit" class="btn" id="btn-form">
       <p> Adicionar</p>
     </button>
@@ -91,7 +84,6 @@
 
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   <script type="module" src="/js/data.js"></script>
-  <script type="module" src="/js/form.js"></script>
 </body>
 
 </html>

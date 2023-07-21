@@ -455,3 +455,9 @@ p {
     color: #ffffff;
     font-size: 2rem;
   }
+
+  #imgur-image {
+    width: 500px; /* Largura desejada */
+    height: auto; /* Altura será ajustada automaticamente para manter a proporção */
+    image-rendering: auto; /* Melhora a qualidade da imagem */
+  }

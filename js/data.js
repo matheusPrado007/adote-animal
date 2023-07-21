@@ -1,6 +1,6 @@
 const fetchAnimais = async () => {
     try {
-      const response = await fetch('https://api-adote.onrender.com/animais');
+      const response = await fetch('http://localhost:4000/pictures');
       if (!response.ok) {
         throw new Error('Erro na solicitação');
       }
@@ -13,45 +13,40 @@ const fetchAnimais = async () => {
   
   fetchAnimais();
 
-  const form = document.getElementById('animalForm');
+  const formElement = document.getElementById('animalForm');
 
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault();
+  formElement.addEventListener('submit', async (e) => {
+    e.preventDefault();
   
-    const formData = new FormData(form);
-    const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
-    const apiUrl = 'https://api-adote.onrender.com/animais';
+    const name = document.getElementById('name').value;
+    const foto = document.getElementById('photo').files[0]; 
+    const idade = document.getElementById('age').value;
+    const descricao = document.getElementById('description').value;
+    const cidade = document.getElementById('city').value;
+    const uf = document.getElementById('state').value;
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('file', foto);
+    formData.append('idade', idade);
+    formData.append('descricao', descricao);
+    formData.append('cidade', cidade);
+    formData.append('uf', uf);
   
     try {
-      const response = await fetch(corsAnywhereUrl + apiUrl, {
+      const response = await fetch('https://api-adote-mongo.onrender.com/pictures', {
         method: 'POST',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: formData
+        body: formData 
       });
   
-      const resultado = await response.json();
-      console.log('Dados enviados com sucesso:', resultado);
-    } catch (erro) {
-      console.error('Erro ao enviar os dados:', erro);
+      if (!response.ok) {
+        throw new Error('Erro na solicitação');
+      }
+  
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Caiu no Erro:', error);
     }
   });
   
-
-function processarImagem(foto) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onload = function() {
-      const dataUrl = reader.result;
-      resolve(dataUrl);
-    };
-
-    reader.onerror = function(error) {
-      reject(error);
-    };
-
-    reader.readAsDataURL(foto);
-  });
-}

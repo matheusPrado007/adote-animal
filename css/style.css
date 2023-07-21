@@ -64,6 +64,8 @@ section{
   z-index: 0;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  text-align: center;
 }
 
 .btn::before{
@@ -320,6 +322,7 @@ section{
 
 .pic {
   border-radius: 16px;
+  width: 100%;
 }
 
 #log {
@@ -329,7 +332,7 @@ section{
 
 .swiper-button-next,
 .swiper-button-prev{
-  color: var(--white);
+  color:#f6ff00;
 }
 
 /* end */

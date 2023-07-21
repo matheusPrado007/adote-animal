@@ -41,3 +41,23 @@ async function fetchAnimais() {
   
   createCarousel();
   
+
+  async function checkImageAvailability(imageUrl) {
+    try {
+      const response = await fetch(imageUrl, {mode: "no-cors"});
+      if (response.status === 200) {
+        console.log('A imagem está disponível no servidor.');
+      } else if (response.status === 404) {
+        console.log('A imagem não foi encontrada no servidor.');
+      } else {
+        console.log('Ocorreu um erro ao carregar a imagem:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Ocorreu um erro na solicitação:', error);
+    }
+  }
+  
+  // Exemplo de uso:
+  const imageUrl = 'http://localhost:4000/uploads/1689854652634.jpg';
+  checkImageAvailability(imageUrl);
+  

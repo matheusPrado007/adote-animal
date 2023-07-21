@@ -27,7 +27,7 @@
   </header>
   <!-- end -->
 
-  <form id="animalForm" action="https://api-adote.onrender.com/imagens" method="post" enctype="multipart/form-data">
+  <form id="animalForm" action="https://api-adote-mongo.onrender.com/pictures" method="post" enctype="multipart/form-data">
     <h1 id="head">Preencha o formulário:</h1>
 
     <div>
@@ -66,6 +66,12 @@
       </label>
       <input type="text" id="state" class="inputs" maxlength="2" required>
     </div>
+    <div>
+      <label for="adopted">
+        <p> Adotado:</p>
+      </label>
+      <input type="text" id="adopted" class="inputs" maxlength="1" placeholder="S ou N " required>
+    </div>
     <button type="submit" class="btn" id="btn-form">
       <p> Adicionar</p>
     </button>
@@ -83,7 +89,7 @@
   <!-- end -->
 
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <script type="module" src="/js/data.js"></script>
+  <script type="module" src="/js/form.js"></script>
 </body>
 
 </html>

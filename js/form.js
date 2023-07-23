@@ -21,7 +21,7 @@ formElement.addEventListener('submit', async (e) => {
   formData.append('adotado', adotado)
 
   try {
-    const response = await fetch('https://api-adote-mongo.onrender.com/pictures', {
+    const response = await fetch('https://deploy-node-in-vercel-lake.vercel.app/pictures', {
       method: 'POST',
       body: formData 
     });

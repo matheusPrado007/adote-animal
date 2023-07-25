@@ -53,7 +53,7 @@ async function createCarousel() {
 
 createCarousel();
 
-const interval = 43200000 ;
+const interval = 3600000;
 
 setInterval(async () => {
   try {

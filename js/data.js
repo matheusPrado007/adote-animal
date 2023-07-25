@@ -5,7 +5,7 @@ async function fetchAnimais() {
         throw new Error('Erro na solicitação');
       }
       const data = await response.json();
-      const imageUrls = data.map(animal => animal.foto);
+      const imageUrls = data.map(animal => animal.foto && animal.adotado.toUpperCase() === 'S');
       localStorage.setItem('cachedImageUrls', JSON.stringify(imageUrls));
       console.log(data);
       return data;
@@ -24,7 +24,7 @@ async function fetchAnimais() {
     const imgElement = document.createElement('img');
     imgElement.referrerPolicy = 'noreferrer'
     imgElement.src = imageSrc;
-    imgElement.alt = 'Imagem'; // Defina um texto alternativo para a imagem
+    imgElement.alt = 'Imagem';
     divImage.appendChild(imgElement);
     divSlide.appendChild(divImage);
   

@@ -617,69 +617,6 @@ section{
 /* media queries */
 
 
-@media (max-width: 768px) {
-  html {
-    font-size: 55%;
-  }
-
-  .header {
-    padding: 1.5rem;
-  }
-
-  .header .navbar {
-    top: 100%;
-    left: 0;
-    right: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .header .navbar.active {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
-
-  .home .content h3 {
-    font-size: 4.5rem;
-  }
-
-  .about .deco-title {
-    display: none;
-  }
-
-  .gallery .slide .image {
-    height: 75rem;
-  }
-}
-
-/* Para telas com largura menor ou igual a 450px */
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-
-  .home .content h3 {
-    font-size: 4rem;
-  }
-
-  .gallery .slide .image {
-    height: 50rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  html {
-    font-size: 60%;
-  }
-
-  .home .content h3 {
-    font-size: 5rem;
-  }
-
-  .about .box-container {
-    gap: 4rem;
-  }
-}
-
-/* Para telas com largura maior que 1024px (telas grandes) */
 @media (min-width: 1025px) {
   html {
     font-size: 65%;
@@ -749,5 +686,83 @@ section{
 
   .footer .box-container .box p {
     font-size: 1.7rem;
+  }
+}
+  @media (min-width: 769px) and (max-width: 1024px) {
+    html {
+      font-size: 60%;
+    }
+  
+    .home .content h3 {
+      font-size: 5rem;
+    }
+  
+    .about .box-container {
+      gap: 4rem;
+    }
+  }
+
+
+
+@media (max-width: 768px){
+  html{
+    font-size: 50%;
+  }
+
+  .home .content h3{
+    font-size: 4.5rem;
+  }
+
+  #menu-btn{
+    display: inline-block;
+  }
+
+  .header .navbar{
+    position: absolute;
+    top: 99%;
+    left: 0; right: 0;
+    background: var(--white);
+    border-top: .1rem solid var(--main);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  .header .navbar.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .header .navbar a{
+    display: block;
+    margin: 2rem;
+    font-size: 2rem;
+  }
+
+  .home {
+    background-position: left;
+  }
+
+  .home .content h3{
+    font-size: 5rem;
+  }
+
+  .about .deco-title{
+    display: none;
+  }
+  .gallery .slide .image {
+    height: 75rem;
+  }
+
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .home .content h3 {
+    font-size: 4rem;
+  }
+
+  .gallery .slide .image {
+    height: 50rem;
   }
 }

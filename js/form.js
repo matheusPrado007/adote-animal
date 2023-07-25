@@ -27,12 +27,22 @@ formElement.addEventListener('submit', async (e) => {
     });
 
     if (!response.ok) {
+      swal('Oh no...', 'Algo deu errado!', 'error')
       throw new Error('Erro na solicitação');
     }
 
     const data = await response.json();
-    console.log(data);
+    swal('Boa!', 'Deu tudo certo!', 'success')
+
+    document.getElementById('name').value = '';
+    document.getElementById('photo').value = '';
+    document.getElementById('age').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('state').value = '';
+    document.getElementById('adopted').value = '';
   } catch (error) {
+    swal('Oh no...', 'Algo deu errado!', 'error')
     console.error('Caiu no Erro:', error);
   }
 });

@@ -45,7 +45,6 @@ async function createCarousel() {
       cachedImageUrls = animalsData.map(animal => animal.foto);
     } catch (error) {
       console.error('Erro:', error);
-      // Aqui você pode tratar o erro, exibindo uma mensagem ao usuário, por exemplo.
       return;
     }
   }
@@ -53,3 +52,13 @@ async function createCarousel() {
 }
 
 createCarousel();
+
+const interval = 43200000 ;
+
+setInterval(async () => {
+  try {
+    await fetchAnimais();
+  } catch (error) {
+    console.error('Erro na verificação periódica:', error);
+  }
+}, interval);

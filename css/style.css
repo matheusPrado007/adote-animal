@@ -616,85 +616,138 @@ section{
 
 /* media queries */
 
-@media(max-width: 991px){
-  html{
+
+@media (max-width: 768px) {
+  html {
     font-size: 55%;
   }
-  .header{
-    padding: 2rem;
-  }
-  section{
-    padding: 8rem 2rem;
-  }
-}
 
-
-@media (max-width: 3000px){
-  .gallery .slide .image{
-    height: 60rem;
-    overflow: hidden;
-    position: relative;
+  .header {
+    padding: 1.5rem;
   }
 
-}
-
-@media (max-width: 768px){
-
-  #menu-btn{
-    display: inline-block;
-  }
-
-  .header .navbar{
-    position: absolute;
-    top: 99%;
-    left: 0; right: 0;
-    background: var(--white);
-    border-top: .1rem solid var(--main);
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
-
-  .header .navbar.active{
+  .header .navbar {
+    top: 100%;
+    left: 0;
+    right: 0;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .header .navbar a{
-    display: block;
-    margin: 2rem;
-    font-size: 2rem;
+  .header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 
-  .home {
-    background-position: left;
+  .home .content h3 {
+    font-size: 4.5rem;
   }
 
-  .home .content h3{
-    font-size: 5rem;
-  }
-
-  .deco-title{
+  .about .deco-title {
     display: none;
   }
-  .gallery .slide .image{
-    height: 70rem;
-    overflow: hidden;
-    position: relative;
-  }
 
+  .gallery .slide .image {
+    height: 75rem;
+  }
 }
 
-@media (max-width: 450px){
-  html{
+/* Para telas com largura menor ou igual a 450px */
+@media (max-width: 450px) {
+  html {
     font-size: 50%;
   }
 
-  .home .content h3{
+  .home .content h3 {
     font-size: 4rem;
   }
 
-  .gallery .slide .image{
-    height: 40rem;
-    overflow: hidden;
-    position: relative;
+  .gallery .slide .image {
+    height: 50rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  html {
+    font-size: 60%;
   }
 
+  .home .content h3 {
+    font-size: 5rem;
+  }
+
+  .about .box-container {
+    gap: 4rem;
+  }
+}
+
+/* Para telas com largura maior que 1024px (telas grandes) */
+@media (min-width: 1025px) {
+  html {
+    font-size: 65%;
+  }
+
+  .header .logo {
+    font-size: 3rem;
+  }
+
+  .header .navbar a {
+    font-size: 1.5rem;
+  }
+
+  .header .icons div {
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
+
+  .header .login-form {
+    top: 100%;
+    right: -150%;
+    width: 40rem;
+  }
+
+  .header .login-form.active {
+    right: 2rem;
+  }
+
+  .home .content h3 {
+    font-size: 6rem;
+  }
+
+  .about .deco-title {
+    font-size: 12rem;
+    top: 100%;
+    left: 48%;
+  }
+
+  .about .box-container {
+    gap: 6rem;
+  }
+
+  .about .content .icons-container {
+    gap: 1rem;
+  }
+
+  .gallery .slide .image {
+    height: 70rem;
+  }
+
+  .animal .box-container .box {
+    flex: 1 1 30rem;
+  }
+
+  .pricing .box-container .box {
+    flex: 1 1 35rem;
+  }
+
+  .contact form .inputBox input,
+  .contact form textarea {
+    width: 45%;
+  }
+
+  .footer .box-container .box h3 {
+    font-size: 2.8rem;
+  }
+
+  .footer .box-container .box p {
+    font-size: 1.7rem;
+  }
 }

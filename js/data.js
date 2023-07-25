@@ -5,6 +5,8 @@ async function fetchAnimais() {
         throw new Error('Erro na solicitação');
       }
       const data = await response.json();
+      const imageUrls = data.map(animal => animal.foto);
+      localStorage.setItem('cachedImageUrls', JSON.stringify(imageUrls));
       console.log(data);
       return data;
     } catch (error) {
@@ -31,13 +33,19 @@ async function fetchAnimais() {
   
   async function createCarousel() {
     const carrossel = document.getElementById('swiper-wrapper');
-    try {
-      const animalsData = await fetchAnimais();
-      animalsData.map(animal => createSlide(animal.foto, carrossel));
-    } catch (error) {
-      console.error('Erro:', error);
+    let cachedImageUrls = JSON.parse(localStorage.getItem('cachedImageUrls'));
+  
+    if (!cachedImageUrls) {
+      try {
+        const animalsData = await fetchAnimais();
+        cachedImageUrls = animalsData.map(animal => animal.foto);
+      } catch (error) {
+        console.error('Erro:', error);
+      }
     }
+    cachedImageUrls.forEach(imageUrl => createSlide(imageUrl, carrossel));
   }
+  
   
   createCarousel();
   

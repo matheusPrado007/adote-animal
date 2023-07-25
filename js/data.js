@@ -5,8 +5,7 @@ async function fetchAnimais() {
         throw new Error('Erro na solicitação');
       }
       const data = await response.json();
-      const adopted = data.map(animal => animal.adotado.toUpperCase() === 'S')
-      const imageUrls = adopted.map(animal => animal.foto);
+      const imageUrls = data.filter(animal => animal.adotado.toUpperCase() === 'S').map(animal => animal.foto);
       localStorage.setItem('cachedImageUrls', JSON.stringify(imageUrls));
       console.log(data);
       return data;

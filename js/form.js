@@ -13,7 +13,7 @@ formElement.addEventListener('submit', async (e) => {
 
   const formData = new FormData();
   formData.append('name', name);
-  formData.append('file', foto);
+  formData.append('imagem', foto);
   formData.append('idade', idade);
   formData.append('descricao', descricao);
   formData.append('cidade', cidade);
@@ -21,7 +21,7 @@ formElement.addEventListener('submit', async (e) => {
   formData.append('adotado', adotado)
 
   try {
-    const response = await fetch('https://deploy-node-in-vercel-lake.vercel.app/pictures', {
+    const response = await fetch('https://adote-amor.onrender.com/upload', {
       method: 'POST',
       body: formData 
     });

@@ -327,6 +327,10 @@ section{
   background-color: #cecece3e; /* sem o background-cl-olor tudo fica branco */
 }
 
+.paw {
+  color: #0ebbf0;
+}
+
 .pic {
   border-radius: 17%;
   width: 100%;

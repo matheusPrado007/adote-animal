@@ -6,6 +6,8 @@
   --black: #000000;
   --white: #ffffff;
   --box-shadow: 0 .5rem 1rem rgb(5, 188, 5);
+  --box-shadow-2: 0 .5rem 1rem rgb(5, 173, 188);
+  --box-shadow-3: 0 .5rem 1rem rgba(0, 255, 251, 0.291);
 }
 
 *{
@@ -140,7 +142,7 @@ section{
 .header .login-form{
   position: absolute;
   top: 115%;
-  right: -105%;
+  right: -150%;
   background: var(--white);
   border-radius: .5rem;
   box-shadow: var(--box-shadow);
@@ -193,13 +195,14 @@ section{
 
 /* home */
 
+
 .home{
   min-height: 100vh;
   display: flex;
   align-items: center;
   background: url(../images/pit.png) no-repeat;
   background-size:cover;
-  background-position: top;
+  background-position: center;
 }
 
 .home .content{
@@ -223,6 +226,10 @@ section{
 /* end */
 
 /* about */
+
+.adop {
+  box-shadow: var(--box-shadow-3);
+}
 
 .about .box-container{
   display: flex;
@@ -321,12 +328,14 @@ section{
 }
 
 .pic {
-  border-radius: 16px;
+  border-radius: 17%;
   width: 100%;
+  box-shadow: var(--box-shadow-2);
 }
 
 #log {
   box-shadow: var(--box-shadow);
+  background-color: #b1ff7263;
   border-radius: 25%;
 }
 

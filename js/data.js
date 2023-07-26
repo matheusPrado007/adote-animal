@@ -29,6 +29,7 @@ function createSlide(imageSrc, parentElement) {
   imgElement.referrerPolicy = 'noreferrer';
   imgElement.src = imageSrc;
   imgElement.alt = 'Imagem';
+  imgElement.classList.add('adop')
   divImage.appendChild(imgElement);
   divSlide.appendChild(divImage);
 
@@ -62,3 +63,6 @@ setInterval(async () => {
     console.error('Erro na verificação periódica:', error);
   }
 }, interval);
+
+
+//////

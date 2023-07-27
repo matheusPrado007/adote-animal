@@ -18,24 +18,6 @@ async function fetchAnimais() {
   }
 }
 
-function createSlide(imageSrc, parentElement) {
-  const divSlide = document.createElement('div');
-  divSlide.classList.add('swiper-slide', 'slide');
-
-  const divImage = document.createElement('div');
-  divImage.classList.add('image');
-
-  const imgElement = document.createElement('img');
-  imgElement.referrerPolicy = 'noreferrer';
-  imgElement.src = imageSrc;
-  imgElement.alt = 'Imagem';
-  imgElement.classList.add('adop')
-  divImage.appendChild(imgElement);
-  divSlide.appendChild(divImage);
-
-  parentElement.appendChild(divSlide);
-}
-
 async function createCarousel() {
   const carrossel = document.getElementById('swiper-wrapper');
   let cachedImageUrls = JSON.parse(localStorage.getItem('cachedImageUrls'));
@@ -43,13 +25,38 @@ async function createCarousel() {
   if (!cachedImageUrls) {
     try {
       const animalsData = await fetchAnimais();
-      cachedImageUrls = animalsData.map(animal => animal.foto);
+      cachedImageUrls = animalsData
+        .filter(animal => animal.adotado.toUpperCase() === ADOPTED_ANIMAL_STATUS)
+        .map(animal => animal.foto);
+      localStorage.setItem('cachedImageUrls', JSON.stringify(cachedImageUrls));
     } catch (error) {
       console.error('Erro:', error);
       return;
     }
   }
-  cachedImageUrls.forEach(imageUrl => createSlide(imageUrl, carrossel));
+
+  // Limpa o carrossel antes de adicionar os slides atualizados
+  carrossel.innerHTML = '';
+
+  // Adiciona as imagens como slides diretamente no conteúdo HTML existente
+  cachedImageUrls.forEach(imageUrl => {
+    const slide = `<div class="swiper-slide slide">
+      <div class="image">
+        <img class="adop" referrerPolicy="noreferrer" src="${imageUrl}" alt="Imagem">
+      </div>
+    </div>`;
+    carrossel.insertAdjacentHTML('beforeend', slide);
+  });
+
+  // Inicializa o Swiper.js
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1, 
+    loop: true, 
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: true, 
+    },
+  });
 }
 
 createCarousel();
@@ -59,10 +66,8 @@ const interval = 3600000;
 setInterval(async () => {
   try {
     await fetchAnimais();
+    createCarousel(); // Atualiza o carrossel após buscar novos dados
   } catch (error) {
     console.error('Erro na verificação periódica:', error);
   }
 }, interval);
-
-
-//////

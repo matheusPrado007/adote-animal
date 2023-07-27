@@ -51,7 +51,11 @@ async function createCarousel() {
   // Inicializa o Swiper.js
   const swiper = new Swiper('.swiper-container', {
     slidesPerView: 1, 
-    loop: true, 
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
     autoplay: {
       delay: 3500,
       disableOnInteraction: true, 

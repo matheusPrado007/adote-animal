@@ -20,11 +20,14 @@ document.addEventListener("DOMContentLoaded", function() {
     navbar.classList.remove('active');
   });
 
-  const swiper = new Swiper(".swiper-container", {
+  const swiper = new Swiper(".gallery-slider", {
     grabCursor: true,
     loop: true,
     centeredSlides: true,
-    // spaceBetween: 20,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: true, 
+    },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
